@@ -36,7 +36,14 @@ fun TaskRow(task: Task, onToggle: () -> Unit) {
     Row(modifier = Modifier.padding(vertical = 4.dp)) {
         Text(
             text = "${task.title} - ${if (task.isCompleted) "Done" else "Pending"}",
-            modifier = Modifier.weight(1f).padding(top = 12.dp)
+            modifier = Modifier
+                .weight(1f)
+                .padding(top = 12.dp)
+                .clickable {
+                // TODO 3: Navigate to detail screen with task title
+                    navController.navigate("taskDetail/${task.title}")
+                }
+
         )
         Checkbox(
             checked = task.isCompleted,
